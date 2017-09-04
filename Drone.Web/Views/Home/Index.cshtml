@@ -1,0 +1,60 @@
+﻿@model Drone.Model.DroneOutputViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-9 instructions">
+        <h4>Instructions</h4>
+        <p>
+            The first line of input is the upper-right coordinates of the battlefield
+
+            Each drone has two lines of input;Drone's position and instructions
+        </p>
+        <p>
+            Example :
+            <ul>
+                <li>5 5   (Upper right coordinates)</li>
+                <li>1 2 N (Initial position of the drone)</li>
+                <li>LMLMLMLMM (instruction to explore the battlefield - allowed values are L,R and M)</li>
+            </ul>
+        </p>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <form id="droneInput" method="post" onsubmit="return validateInput();">
+            <div class="roundcorner">
+                <p>INPUT</p>
+
+                @Html.TextArea("DroneInputModel", new { rows = 5, columns = 20 })
+                <div><input type="submit" value="Execute" id="btnExecute" class="form-submit-button"/></div>
+                @*<div>
+                        <button name="Execute" class="btn-primary" id="btnExecute" data-submiturl="/Home/_DroneOutput">Execute</button>
+                    </div>*@
+                <span id="errorMessage" class="has-error">
+                @if (Model != null && !String.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    @Model.ErrorMessage
+                }
+                </span>
+            </div>
+            <div id="droneoutput" class="roundcorner">
+                <p>OUTPUT</p>
+                @if (Model != null && String.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    foreach (var output in Model.DroneOutputs)
+                    {
+                        <p>@output.PositionX @output.PositionY @output.Heading</p>
+                    }
+                }
+                else
+                {
+
+                }
+            </div>
+        </form>
+    </div>
+
+</div>
