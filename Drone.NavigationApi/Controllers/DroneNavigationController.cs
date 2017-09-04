@@ -16,10 +16,11 @@ namespace Drone.NavigationApi.Controllers
         private int GridTopX = 0;
         private int GridTopY = 0;
         /// <summary>
-        /// 
+        /// Api mothod that is exposed for the consumption.
         /// </summary>
-        /// <param name="droneControlModel"></param>
-        /// <returns></returns>
+        /// <param name="droneControlModel">Input instructions of the initial positions of the drone
+        /// and the Gird coordinates</param>
+        /// <returns>List of final coordinates based on the input provided</returns>
         [HttpGet]
         [Route("api/DroneNavigation/{droneControlModel}")]
         public List<Drone.Model.DroneOutputModel> GetDroneCoordinates([FromBody] DroneControlModel droneControlModel)
@@ -27,6 +28,11 @@ namespace Drone.NavigationApi.Controllers
             return ExecuteDroneNavigation(droneControlModel);
         }
 
+        /// <summary>
+        /// Mthod to move the x,y coordinates of the drone
+        /// </summary>
+        /// <param name="inputLocation"></param>
+        /// <returns></returns>
         private DroneInputModel Move(DroneInputModel inputLocation)
         {
 
@@ -70,6 +76,11 @@ namespace Drone.NavigationApi.Controllers
             return inputLocation;
         }
 
+        /// <summary>
+        /// Processes the navigation instructions
+        /// </summary>
+        /// <param name="droneInputCommand"></param>
+        /// <returns></returns>
         private DroneOutputModel ExecuteCommand(DroneInputModel droneInputCommand)
         {
             var commands = droneInputCommand.Instructions.ToCharArray();

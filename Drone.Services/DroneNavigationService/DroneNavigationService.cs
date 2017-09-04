@@ -16,7 +16,11 @@ namespace Drone.Services
         {
             settingsService = _settingsService;
         }
-       
+       /// <summary>
+       /// Calls the Api endpoint to get the final coordinates
+       /// </summary>
+       /// <param name="droneInputModel"></param>
+       /// <returns></returns>
         public async Task<List<Drone.Model.DroneOutputModel>> GetDroneCoordinatesFromApi(string droneInputModel)
         {
             string uri = settingsService.GetWebApiPath();

@@ -25,9 +25,9 @@ namespace Drone.Web.Controllers
             DroneOutputViewModel finalDroneCoordinates = new DroneOutputViewModel();
             try
             {
-                var errorMessage = string.Empty;
-
-
+                //TODO - Serverside validation
+                var errorMessage = ValidateInputValues(droneInputModel);
+                                
                 if (String.IsNullOrEmpty(errorMessage))
                 {
                     finalDroneCoordinates.DroneOutputs = await droneNavigationService.GetDroneCoordinatesFromApi(droneInputModel);
@@ -42,7 +42,11 @@ namespace Drone.Web.Controllers
             }
             return View(finalDroneCoordinates);
         }
-
+        /// <summary>
+        /// TODO Serverside validation
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
         public string ValidateInputValues(string values)
         {
             var errorMessage = string.Empty;

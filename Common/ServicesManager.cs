@@ -6,7 +6,7 @@
         private static string baseAddress = Common.ConfigSettingsReader.GetConfigurationValues(apiEndPoint);
 
         /// <summary>
-        /// Constructs the uri by appending the service name to the BaseAdderess
+        /// Constructs the uri by appending the service name to the api base adderess
         /// </summary>
         /// <param name="serviceName">Name of the service to access</param>
         /// <returns>Client uri string</returns>

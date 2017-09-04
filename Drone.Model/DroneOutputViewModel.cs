@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
-
+/// <summary>
+/// View model used for displaying the output to UI
+/// </summary>
 namespace Drone.Model
 {
     public class DroneOutputViewModel

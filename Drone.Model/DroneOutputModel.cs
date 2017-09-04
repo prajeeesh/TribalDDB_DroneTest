@@ -1,4 +1,8 @@
-﻿namespace Drone.Model
+﻿/// <summary>
+/// Model has the final coordinates and of the drone after the exploration
+/// instructions are applied.
+/// </summary>
+namespace Drone.Model
 {
     public class DroneOutputModel
     {
